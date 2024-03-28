@@ -187,6 +187,10 @@ func main() {
 						if err := params.SetActive(params.HoleskyConfig()); err != nil {
 							log.Fatal(err)
 						}
+					case params.PraseOdyName:
+						if err := params.SetActive(params.PraseOdyConfig()); err != nil {
+							log.Fatal(err)
+						}
 					default:
 						log.Fatalf("Unknown network provided: %s", network)
 					}
