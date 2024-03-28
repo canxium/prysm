@@ -24,6 +24,11 @@ var (
 		Name:  "holesky",
 		Usage: "Runs Prysm configured for the Holesky test network.",
 	}
+	// PraseodyTestnet flag for the multiclient Ethereum consensus testnet.
+	PraseodyTestnet = &cli.BoolFlag{
+		Name:  "praseody",
+		Usage: "Runs Prysm configured for the PraseOdy test network.",
+	}
 	// Mainnet flag for easier tooling, no-op
 	Mainnet = &cli.BoolFlag{
 		Value: true,
@@ -185,6 +190,7 @@ var ValidatorFlags = append(deprecatedFlags, []cli.Flag{
 	HoleskyTestnet,
 	PraterTestnet,
 	SepoliaTestnet,
+	PraseodyTestnet,
 	Mainnet,
 	dynamicKeyReloadDebounceInterval,
 	attestTimely,
@@ -210,6 +216,7 @@ var BeaconChainFlags = append(deprecatedBeaconFlags, append(deprecatedFlags, []c
 	HoleskyTestnet,
 	PraterTestnet,
 	SepoliaTestnet,
+	PraseodyTestnet,
 	Mainnet,
 	disablePeerScorer,
 	disableBroadcastSlashingFlag,
@@ -242,4 +249,5 @@ var NetworkFlags = []cli.Flag{
 	PraterTestnet,
 	SepoliaTestnet,
 	HoleskyTestnet,
+	PraseodyTestnet,
 }
