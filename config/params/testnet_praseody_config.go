@@ -25,8 +25,8 @@ func UsePraseOdyNetworkConfig() {
 // PraseOdyConfig defines the config for the Sepolia beacon chain testnet.
 func PraseOdyConfig() *BeaconChainConfig {
 	cfg := MainnetConfig().Copy()
-	cfg.MinGenesisTime = 1711616400
-	cfg.GenesisDelay = 7200
+	cfg.MinGenesisTime = 1711702800
+	cfg.GenesisDelay = 1800
 	cfg.MinGenesisActiveValidatorCount = 164
 	cfg.ConfigName = PraseOdyName
 	cfg.GenesisForkVersion = []byte{0x00, 0x32, 0x23, 0x00}
