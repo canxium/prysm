@@ -117,6 +117,9 @@ func isFullyWithdrawableValidator(val *ethpb.Validator, epoch primitives.Epoch) 
 // isPartiallyWithdrawable returns whether the validator is able to perform a
 // partial withdrawal. This function assumes that the caller has a lock on the state
 func isPartiallyWithdrawableValidator(val *ethpb.Validator, balance uint64) bool {
+	// Because Canxium require 320 CAU and have no staking reward. We failed to change the MaxEffectiveBalance to 320.
+	// So, disable partially withdrawal to not allow validators withdrawal back 288 CAU.
+	return false
 	if val == nil {
 		return false
 	}

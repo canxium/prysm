@@ -139,7 +139,7 @@ func configureTestnet(ctx *cli.Context) error {
 		}
 		applyHoleskyFeatureFlags(ctx)
 		params.UseHoleskyNetworkConfig()
-	} else if ctx.Bool(PraseodyTestnet.Name) {
+	} else if ctx.Bool(PraseOdyTestnet.Name) {
 		log.Warn("Running on the PraseOdy Hybrid Chain Testnet")
 		if err := params.SetActive(params.PraseOdyConfig().Copy()); err != nil {
 			return err
