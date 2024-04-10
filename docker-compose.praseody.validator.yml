@@ -49,7 +49,7 @@ services:
     image: canxium/prysm:validator-v5.0.1
     volumes:
       - validator:/data
-      - /Users/neo/Documents/praseody/keystores:/keystores
+      - ./keystores:/keystores
       - logs:/logs
     command: accounts import --wallet-dir=/data/keystores --keys-dir=/keystores --wallet-password-file=/keystores/password.txt --account-password-file=/keystores/password.txt --accept-terms-of-use
 
@@ -58,14 +58,14 @@ services:
     restart: always
     volumes:
       - validator:/data
-      - /Users/neo/Documents/praseody/keystores:/keystores
+      - ./keystores:/keystores
       - logs:/logs
     depends_on:
       import_keys:
         condition: service_completed_successfully
       beacon_node:
         condition: service_started
-    command: --beacon-rpc-provider=beacon_node:4000 --datadir=/data --accept-terms-of-use --wallet-dir=/data/keystores --wallet-password-file=/keystores/password.txt --praseody 
+    command: --suggested-fee-recipient 0x6ce1dA40fb951Fa456fE288932Bc9d1de785e226 --beacon-rpc-provider=beacon_node:4000 --datadir=/data --accept-terms-of-use --wallet-dir=/data/keystores --wallet-password-file=/keystores/password.txt --praseody 
 
 volumes:
   canxium:
