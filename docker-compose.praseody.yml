@@ -1,0 +1,51 @@
+version: "3.4"
+services:
+  ssl:
+    image: itzg/openssl-ubuntu:latest
+    volumes:
+      - canxium:/canxium
+    command: rand -hex 32 | tr -d "\n" > "/canxium/jwt.hex"
+
+  init:
+    image: canxium/go-canxium:praseody
+    depends_on:
+      ssl:
+        condition: service_completed_successfully
+    volumes:
+      - canxium:/canxium
+    command: --datadir=/canxium --db.engine=pebble init /genesis/praseody.genesis.json
+
+  canxium:
+    image: canxium/go-canxium:praseody
+    restart: always
+    volumes:
+      - canxium:/canxium
+    depends_on:
+      init:
+        condition: service_completed_successfully
+    ports:
+      - "30303:30303"
+    command: --http --db.engine=pebble --syncmode snap --authrpc.addr 0.0.0.0 --authrpc.jwtsecret=/canxium/jwt.hex --authrpc.vhosts=canxium --networkid 30203 --datadir /canxium --bootnodes enode://9046044c5d6801d927ddaace0bc96dafa8999f8f5ee6e10bb91bc96bc80347afa77152d7a95c16d247d0faf17323850ca8c4cdd6845138014cc5c5c93fee5323@195.35.45.155:30303,enode://7918d918a36654eeaa860870dbad186553823aa386896b3326a0e8ba1cd60ed78242fad33f691248e1554c87237fb90da70eaa149fe04e7541809e4a835fbd14@15.235.141.136:30303
+
+  beacon_node:
+    image: canxium/prysm:beacon-v5.0.1
+    restart: always
+    volumes:
+      - beacon_node:/data
+      - canxium:/canxium
+      - logs:/logs
+    ports:
+      - "3500:3500" # API port
+      - "12000:12000" # P2P port
+      - "13000:13000" # P2P port
+    depends_on:
+      ssl:
+        condition: service_completed_successfully
+      canxium:
+        condition: service_started
+    command: --datadir=/data --execution-endpoint=http://canxium:8551 --jwt-secret=/canxium/jwt.hex --accept-terms-of-use --verbosity info --praseody --checkpoint-sync-url https://pr-beacon.canxium.net
+
+volumes:
+  canxium:
+  beacon_node:
+  logs:
