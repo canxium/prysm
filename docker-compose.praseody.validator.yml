@@ -43,7 +43,7 @@ services:
         condition: service_completed_successfully
       canxium:
         condition: service_started
-    command: --datadir=/data --execution-endpoint=http://canxium:8551 --jwt-secret=/canxium/jwt.hex --accept-terms-of-use --verbosity info --praseody --checkpoint-sync-url https://pr-beacon.canxium.net --grpc-gateway-host=0.0.0.0 --rpc-host=0.0.0.0
+    command: --datadir=/data --execution-endpoint=http://canxium:8551 --jwt-secret=/canxium/jwt.hex --accept-terms-of-use --verbosity info --praseody --checkpoint-sync-url https://pr-beacon.canxium.net --grpc-gateway-host=0.0.0.0 --rpc-host=0.0.0.0 --min-sync-peers 1
 
   import_keys:
     image: canxium/prysm:validator-v5.0.1
