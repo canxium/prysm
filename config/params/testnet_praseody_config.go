@@ -59,6 +59,9 @@ func PraseOdyConfig() *BeaconChainConfig {
 	cfg.Eth1FollowDistance = 128
 
 	cfg.BaseRewardFactor = 0
+	cfg.BasePenaltyFactor = 0
+	cfg.InactivityPenaltyQuotientBellatrix = 1 << 24
+	cfg.MaxExcessBalance = 32 * 1e9
 
 	cfg.InitializeForkSchedule()
 	return cfg

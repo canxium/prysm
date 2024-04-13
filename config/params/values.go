@@ -13,4 +13,5 @@ const (
 	SepoliaName         = "sepolia"
 	HoleskyName         = "holesky"
 	PraseOdyName        = "praseody"
+	CanxiumName         = "canxium"
 )

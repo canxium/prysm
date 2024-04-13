@@ -274,7 +274,9 @@ func AttestationsDelta(beaconState state.BeaconState, bal *precompute.Balance, v
 	finalizedEpoch := beaconState.FinalizedCheckpointEpoch()
 	increment := cfg.EffectiveBalanceIncrement
 	factor := cfg.BaseRewardFactor
+	penaltyFactor := cfg.BasePenaltyFactor
 	baseRewardMultiplier := increment * factor / math.CachedSquareRoot(bal.ActiveCurrentEpoch)
+	basePenaltyMultiplier := increment * penaltyFactor / math.CachedSquareRoot(bal.ActiveCurrentEpoch)
 	leak := helpers.IsInInactivityLeak(prevEpoch, finalizedEpoch)
 
 	// Modified in Altair and Bellatrix.
@@ -286,7 +288,7 @@ func AttestationsDelta(beaconState state.BeaconState, bal *precompute.Balance, v
 	inactivityDenominator := bias * inactivityPenaltyQuotient
 
 	for i, v := range vals {
-		attDeltas[i], err = attestationDelta(bal, v, baseRewardMultiplier, inactivityDenominator, leak)
+		attDeltas[i], err = attestationDelta(bal, v, baseRewardMultiplier, basePenaltyMultiplier, inactivityDenominator, leak)
 		if err != nil {
 			return nil, err
 		}
@@ -298,7 +300,7 @@ func AttestationsDelta(beaconState state.BeaconState, bal *precompute.Balance, v
 func attestationDelta(
 	bal *precompute.Balance,
 	val *precompute.Validator,
-	baseRewardMultiplier, inactivityDenominator uint64,
+	baseRewardMultiplier, basePenaltyMultiplier, inactivityDenominator uint64,
 	inactivityLeak bool) (*AttDelta, error) {
 	eligible := val.IsActivePrevEpoch || (val.IsSlashed && !val.IsWithdrawableCurrentEpoch)
 	// Per spec `ActiveCurrentEpoch` can't be 0 to process attestation delta.
@@ -310,6 +312,7 @@ func attestationDelta(
 	increment := cfg.EffectiveBalanceIncrement
 	effectiveBalance := val.CurrentEpochEffectiveBalance
 	baseReward := (effectiveBalance / increment) * baseRewardMultiplier
+	basePenalty := (effectiveBalance / increment) * basePenaltyMultiplier
 	activeIncrement := bal.ActiveCurrentEpoch / increment
 
 	weightDenominator := cfg.WeightDenominator
@@ -324,7 +327,7 @@ func attestationDelta(
 			attDelta.SourceReward += n / (activeIncrement * weightDenominator)
 		}
 	} else {
-		attDelta.SourcePenalty += baseReward * srcWeight / weightDenominator
+		attDelta.SourcePenalty += basePenalty * srcWeight / weightDenominator
 	}
 
 	// Process target reward / penalty
@@ -334,7 +337,7 @@ func attestationDelta(
 			attDelta.TargetReward += n / (activeIncrement * weightDenominator)
 		}
 	} else {
-		attDelta.TargetPenalty += baseReward * tgtWeight / weightDenominator
+		attDelta.TargetPenalty += basePenalty * tgtWeight / weightDenominator
 	}
 
 	// Process head reward / penalty
