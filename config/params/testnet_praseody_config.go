@@ -61,7 +61,7 @@ func PraseOdyConfig() *BeaconChainConfig {
 	cfg.BaseRewardFactor = 0
 	cfg.BasePenaltyFactor = 0
 	cfg.InactivityPenaltyQuotientBellatrix = 1 << 24
-	cfg.MaxExcessBalance = 32 * 1e9
+	cfg.MaxExcessBalance = 32 * 1e10
 
 	cfg.InitializeForkSchedule()
 	return cfg
