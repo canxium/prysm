@@ -29,12 +29,18 @@ var (
 		Name:  "praseody",
 		Usage: "Runs Prysm configured for the PraseOdy test network.",
 	}
+	Canxium = &cli.BoolFlag{
+		Value: true,
+		Name:  "canxium",
+		Usage: "Runs on Canxium main network. This is the default and can be omitted.",
+	}
 	// Mainnet flag for easier tooling, no-op
 	Mainnet = &cli.BoolFlag{
 		Value: true,
 		Name:  "mainnet",
 		Usage: "Runs on Ethereum main network. This is the default and can be omitted.",
 	}
+
 	devModeFlag = &cli.BoolFlag{
 		Name:  "dev",
 		Usage: "Enables experimental features still in development. These features may not be stable.",
@@ -179,6 +185,7 @@ var ValidatorFlags = append(deprecatedFlags, []cli.Flag{
 	PraterTestnet,
 	SepoliaTestnet,
 	PraseOdyTestnet,
+	Canxium,
 	Mainnet,
 	dynamicKeyReloadDebounceInterval,
 	attestTimely,
@@ -202,6 +209,7 @@ var BeaconChainFlags = append(deprecatedBeaconFlags, append(deprecatedFlags, []c
 	PraterTestnet,
 	SepoliaTestnet,
 	PraseOdyTestnet,
+	Canxium,
 	Mainnet,
 	disablePeerScorer,
 	disableBroadcastSlashingFlag,
@@ -231,6 +239,7 @@ var E2EBeaconChainFlags = []string{
 // NetworkFlags contains a list of network flags.
 var NetworkFlags = []cli.Flag{
 	Mainnet,
+	Canxium,
 	PraterTestnet,
 	SepoliaTestnet,
 	HoleskyTestnet,

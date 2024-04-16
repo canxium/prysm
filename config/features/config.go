@@ -146,6 +146,13 @@ func configureTestnet(ctx *cli.Context) error {
 		}
 		applyPraseOdyFeatureFlags(ctx)
 		params.UsePraseOdyNetworkConfig()
+	} else if ctx.Bool(Canxium.Name) {
+		log.Warn("Running on the Canxium Hybrid Chain")
+		if err := params.SetActive(params.CanxiumConfig().Copy()); err != nil {
+			return err
+		}
+		applyCanxiumFeatureFlags(ctx)
+		params.UseCanxiumNetworkConfig()
 	} else {
 		if ctx.IsSet(cmd.ChainConfigFileFlag.Name) {
 			log.Warn("Running on custom Ethereum network specified in a chain configuration yaml file")
@@ -173,6 +180,10 @@ func applyHoleskyFeatureFlags(ctx *cli.Context) {
 
 // Insert feature flags within the function to be enabled for PraseOdy testnet.
 func applyPraseOdyFeatureFlags(ctx *cli.Context) {
+}
+
+// Insert feature flags within the function to be enabled for Canxium mainnet.
+func applyCanxiumFeatureFlags(ctx *cli.Context) {
 }
 
 // ConfigureBeaconChain sets the global config based
