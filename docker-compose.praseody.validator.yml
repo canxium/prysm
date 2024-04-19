@@ -28,7 +28,7 @@ services:
     command: --syncmode snap --http --db.engine=pebble --authrpc.addr 0.0.0.0 --authrpc.jwtsecret=/canxium/jwt.hex --authrpc.vhosts=canxium --networkid 30203 --datadir /canxium --bootnodes enode://9046044c5d6801d927ddaace0bc96dafa8999f8f5ee6e10bb91bc96bc80347afa77152d7a95c16d247d0faf17323850ca8c4cdd6845138014cc5c5c93fee5323@195.35.45.155:30303,enode://7918d918a36654eeaa860870dbad186553823aa386896b3326a0e8ba1cd60ed78242fad33f691248e1554c87237fb90da70eaa149fe04e7541809e4a835fbd14@15.235.141.136:30303
 
   beacon_node:
-    image: canxium/prysm:beacon-v5.0.1
+    image: canxium/prysm:beacon-v5.0.3
     restart: always
     volumes:
       - beacon_node:/data
@@ -46,7 +46,7 @@ services:
     command: --datadir=/data --execution-endpoint=http://canxium:8551 --jwt-secret=/canxium/jwt.hex --accept-terms-of-use --verbosity info --praseody --checkpoint-sync-url https://pr-beacon.canxium.net --grpc-gateway-host=0.0.0.0 --rpc-host=0.0.0.0 --min-sync-peers 1
 
   import_keys:
-    image: canxium/prysm:validator-v5.0.1
+    image: canxium/prysm:validator-v5.0.3
     volumes:
       - validator:/data
       - ./keystores:/keystores
@@ -54,7 +54,7 @@ services:
     command: accounts import --wallet-dir=/data/keystores --keys-dir=/keystores --wallet-password-file=/keystores/password.txt --account-password-file=/keystores/password.txt --accept-terms-of-use
 
   validator:
-    image: canxium/prysm:validator-v5.0.1
+    image: canxium/prysm:validator-v5.0.3
     restart: always
     volumes:
       - validator:/data
