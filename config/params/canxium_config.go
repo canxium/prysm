@@ -8,20 +8,15 @@ func UseCanxiumNetworkConfig() {
 	cfg.ContractDeploymentBlock = 3459834
 	cfg.BootstrapNodes = []string{
 		// lighthouse
-		"enr:-Le4QHeeSdQ-bw7-E9ts1cRkSgmZ5Jn_kZwNz2d6lgvj-dWmN87YR4BAf5uzedTc6MRsDNyCAuOs5oj3GpA-tUGpugkDhGV0aDKQtTA_KgEAAAAAIgEAAAAAAIJpZIJ2NIJpcISAjDkLg2lwNpAqAQT4wBJYOgAAAAAAAAABiXNlY3AyNTZrMaECN6t9SCWYDli82RCsM3IGdPOBQ1PXYKwc-0_X1vb_dW6DdWRwgiMohHVkcDaCI4I",
-		"enr:-Le4QOn1Xxt61bjbzQj3_SR4v6XhATbnzfpHzprodQSHKPkpGqtRz6iNEnEfYBpbLCwvf8rcjl8zWOJrPEu6FLZ1-HcBhGV0aDKQtTA_KgEAAAAAIgEAAAAAAIJpZIJ2NIJpcISn6-WZg2lwNpAqAQT4wBJZpQAAAAAAAAABiXNlY3AyNTZrMaEDeoIwLH0EgoBK-rvWymfZoMfVvuakz_hYKaDS4vrhyJ6DdWRwgiMohHVkcDaCI4I",
-		"enr:-Le4QIniYpAcd4w1M682s3tF7F_zqjEg4nRu8lJXELBCQNQrQOoP1fXRfuCICj51eCQJmSf3EW6d8w0tfoh2OiJwlAIBhGV0aDKQtTA_KgEAAAAAIgEAAAAAAIJpZIJ2NIJpcIQz3gyzg2lwNpAmB1MAAgUCAAAAAAAAADnYiXNlY3AyNTZrMaECCjcCM_ie13QIqkAg12TJlFC6C9_d0todebg-ahRalKqDdWRwgiMohHVkcDaCI4I",
-		"enr:-Le4QDo2Sn5g4w_dN1VASUrDfcrUZoz_2PH4R5ITFAZ_3OuMF2GtEtvqoiJgGjbZCYQ6cZBo_917id-1eiaMPD2TX9gBhGV0aDKQtTA_KgEAAAAAIgEAAAAAAIJpZIJ2NIJpcIQFobgAg2lwNpAqAQT_APCN3QAAAAAAAAABiXNlY3AyNTZrMaEDdZHAmo6B5fHY1ndSBT-7cu12vidf1CkElkdybQktNt6DdWRwgiMohHVkcDaCI4I",
+		"enr:-KG4QOOxrHySRX2492UCkBI0SaaXKagaiKT5EA_eWqRCRqNBOCG-uUL3L4f23hld56TGJxLKKvje4wVMmjMWldT_HkkBgmlkgnY0gmlwhAWhuACDaXA2kCoBBP8A8I3dAAAAAAAAAAGJc2VjcDI1NmsxoQMEhQ0b95Na4X8HKPPiXkOfBFjtrwbFfxv2zQd9ftEjDoN1ZHCCIyiEdWRwNoIjgg", // 40
+		"enr:-KG4QP-8mQn4mF7w0sEgsppcqQKC8OajMziibw5Nwdx6aS7XJKU37AaLRLIK2_SZKw-YN-RxCTPFrB_NV6kW4qOqdwQBgmlkgnY0gmlwhDENjdaDaXA2kCoBBPjAEjvJAAAAAAAAAAGJc2VjcDI1NmsxoQM3hKBApmcdjSYlc0v-dfz5Ayxo8iUQhkIO-WlPTJ6OIIN1ZHCCIyiEdWRwNoIjgg", // 14
+		"enr:-KG4QDdnAQ0BXczORLH-NMhOmgJOwByQMlaFe89ZE6bKBxDCMKzYt4W8oh3jUTSUu4srZx_IDBja85jrM1Uc-j4HN1IBgmlkgnY0gmlwhLIQidGDaXA2kCoCR4AAEiOnAAAAAAAAAAGJc2VjcDI1NmsxoQPkMcI-M6EAYP6ZhbZJ3qndpqRpFMQXHZk6JKdVp8L3coN1ZHCCIyiEdWRwNoIjgg", // 09
 
-		// lodestar small
-		"enr:-KG4QJH7wBX6C4U8Ia9s2BUzF_v5bKyTRJkrh9SdMUQ8f1w5RjddgJU_VnIOzgo23CSRdVkEtxfqBAwZUgZUqkfYhz8EgmlkgnY0gmlwhDPeDLODaXA2kCYHUwACBQIAAAAAAAAAOdiJc2VjcDI1NmsxoQLRKq040iFxE6conbY-PrOnZvTZWrNe1fo4YTQYEKBadYN1ZHCCIymEdWRwNoIjgw",
-		"enr:-KG4QJo1hXkNHa5FI5me-8VW2lbnuUi69N_JEa8oqH0Ik1dLFrk2xpgzSGlMuZe2_TKhcBxdGbRnR4TUKfYIvSlZaeEBgmlkgnY0gmlwhAWhuACDaXA2kCoBBP8A8I3dAAAAAAAAAAGJc2VjcDI1NmsxoQO9vb9FwSJh3mxz3wTIdjpBCJr2NMlDnLQ_h3BOOJGQfoN1ZHCCIymEdWRwNoIjgw",
-		"enr:-KG4QNxl-gdB50FYz7MQ9Eyx6kPbH6ssx6vXk8Ppfuv-m_oHE9VrqLVM0vYjyOMAIoAGjZfRTFkbp_CXcAnxAxtnji4BgmlkgnY0gmlwhKfr5ZmDaXA2kCoBBPjAElmlAAAAAAAAAAGJc2VjcDI1NmsxoQLSb0IKr0D_oYSSMbWnRs9uEbQvmgSHq3hkJZ47oeYqPoN1ZHCCIymEdWRwNoIjgw",
-		"enr:-KG4QPsfe0h21rUZa1-Y2LHeK6zHkEW9CgHuvkC-CtXkneFERzeUrKxAcFL0SWg2DJlmjkf4wSkovNwnE3PkzZFiK28BgmlkgnY0gmlwhICMOQuDaXA2kCoBBPjAElg6AAAAAAAAAAGJc2VjcDI1NmsxoQMqVkdXuC1greHkMG4VmTxBHlWeIQ2MLBzPWUH4vZuZEYN1ZHCCIymEdWRwNoIjgw",
+		// lodestar bootnodes
+		"enr:-KG4QMC-zvtTtzzKxeIh79dU43e8lB0mmyAi5LGGx55S3fulSY5NLtuRk-5XREhxWXCIgui659j6ybm6RoLYkUxAam8DgmlkgnY0gmlwhAWhuACDaXA2kCoBBP8A8I3dAAAAAAAAAAGJc2VjcDI1NmsxoQMnWOr_eBqyHfkFl38LbEcHbJUklOIvi-e0g6Lc2voJ9IN1ZHCCIymEdWRwNoIjgw", // 51
+		"enr:-KG4QCN5VGM8m82K5eGFrIcfxRFT-fZ07xuNsNQhSNnglZLWeD62wo3yHX4a_3s_NRYZGsoPL5MTNHI4uEgsfRCdYt4BgmlkgnY0gmlwhDENjdaDaXA2kCoBBPjAEjvJAAAAAAAAAAGJc2VjcDI1NmsxoQMKzy96zC5aeVJlTH2iZEhBXC7OsFePTavXie0tPZP1hIN1ZHCCIymEdWRwNoIjgw", // 49
+		"enr:-KG4QCqcddZnwxPt9V_Wya3i9pfcdxfBkHoPPmgAZG8mkx-3DLoMwxC-BqaqoICiCXzDotRHw50Abi11_C1fODZs5kgBgmlkgnY0gmlwhLIQidGDaXA2kCoCR4AAEiOnAAAAAAAAAAGJc2VjcDI1NmsxoQJmXcAl4vGAoCB9-k51rvJz8Lmo21HvWe8CEIFa0ezUKoN1ZHCCIymEdWRwNoIjgw", // 17
 
-		// lodestar big
-		"enr:-KG4QMD_1xIgqMBGxuzprUm7SAp5HoFyfjAuc2Y_r6Vmdw6SETb__EtFG09ch-Y9LAXfJxqeLUioYzx8jgZQ2M2Vw2wIgmlkgnY0gmlwhMBjAMGDaXA2kCYHUwAAYDHBAAAAAAAAAAGJc2VjcDI1NmsxoQMXul8Z8ZRhF6KFQmEwB6o0vUjFN1IqUUcQPvR2yQocN4N1ZHCCI4KEdWRwNoIjgw",
-		"enr:-KG4QGj23NcTPwhWNkzeTq0PRt6txNsRS0TbAklFDJTkKu59HVkp9vcx2UWv5ANwYDxBxah4NoAMnWk7yGkGTraXnxABgmlkgnY0gmlwhMBjD6eDaXA2kCYHUwAAYECnAAAAAAAAAAGJc2VjcDI1NmsxoQKRzBefFuVAdBTdVhgFk5zUM1szGbG5NsWCv4wQ38iTAYN1ZHCCI4KEdWRwNoIjgw",
 	}
 	OverrideBeaconNetworkConfig(cfg)
 }
@@ -31,10 +26,10 @@ func CanxiumConfig() *BeaconChainConfig {
 	cfg := MainnetConfig().Copy()
 	cfg.ConfigName = CanxiumName
 
-	cfg.MinGenesisTime = 1713571200 // 20/4/2024 00:00:00
+	cfg.MinGenesisTime = 1713675600 // Apr 21, 2024, 1209 AM UTC
 	cfg.MinGenesisActiveValidatorCount = 164
 
-	cfg.GenesisDelay = 864000 // 10 days
+	cfg.GenesisDelay = 777600 // 9 days
 
 	cfg.DepositChainID = 3003
 	cfg.DepositNetworkID = 3003
@@ -42,22 +37,21 @@ func CanxiumConfig() *BeaconChainConfig {
 
 	cfg.GenesisForkVersion = []byte{0x00, 0x30, 0x03, 0x00}
 	cfg.AltairForkVersion = []byte{0x00, 0x30, 0x13, 0x00}
-	cfg.AltairForkEpoch = 16
+	cfg.AltairForkEpoch = 5
 	cfg.BellatrixForkVersion = []byte{0x00, 0x30, 0x23, 0x00}
-	cfg.BellatrixForkEpoch = 450 // Estimate 1/5/2024
+	cfg.BellatrixForkEpoch = 10 // Estimate Apr 30, 2024
 	cfg.CapellaForkVersion = []byte{0x00, 0x30, 0x33, 0x00}
-	cfg.CapellaForkEpoch = 27450 // Estimate 30/6/2024
+	cfg.CapellaForkEpoch = 45000 // Estimate 8 August 2024
 	cfg.DenebForkVersion = []byte{0x00, 0x30, 0x43, 0x00}
 	cfg.DenebForkEpoch = math.MaxUint64
 
-	cfg.TerminalTotalDifficulty = "80000000000000000000"
+	cfg.TerminalTotalDifficulty = "86680000000000000000" // Estimate 20 June 2024 if hashrate = 45TH
 
 	cfg.SecondsPerSlot = 6
 	cfg.SecondsPerETH1Block = 6
 	cfg.Eth1FollowDistance = 2048
 
-	cfg.BaseRewardFactor = 0
-	cfg.BasePenaltyFactor = 128
+	cfg.BaseRewardFactor = 512
 	cfg.InactivityPenaltyQuotientBellatrix = 1 << 22
 	cfg.MaxExcessBalance = 32 * 1e10
 
