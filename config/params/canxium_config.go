@@ -26,10 +26,10 @@ func CanxiumConfig() *BeaconChainConfig {
 	cfg := MainnetConfig().Copy()
 	cfg.ConfigName = CanxiumName
 
-	cfg.MinGenesisTime = 1713675600 // Apr 21, 2024, 1209 AM UTC
-	cfg.MinGenesisActiveValidatorCount = 164
+	cfg.MinGenesisTime = 1713657600 // Apr 21, 2024, 00:00 AM UTC
+	cfg.MinGenesisActiveValidatorCount = 166
 
-	cfg.GenesisDelay = 777600 // 9 days
+	cfg.GenesisDelay = 779671 // 9 days
 
 	cfg.DepositChainID = 3003
 	cfg.DepositNetworkID = 3003
