@@ -96,16 +96,26 @@ func TotalActiveBalance(s state.ReadOnlyBeaconState) (uint64, error) {
 //	  Increase the validator balance at index ``index`` by ``delta``.
 //	  """
 //	  state.balances[index] += delta
-func IncreaseBalance(state state.BeaconState, idx primitives.ValidatorIndex, delta uint64) error {
+func IncreaseBalance(state state.BeaconState, idx primitives.ValidatorIndex, delta uint64, deposit bool) error {
 	balAtIdx, err := state.BalanceAtIndex(idx)
 	if err != nil {
 		return err
 	}
-	newBal, err := IncreaseBalanceWithVal(balAtIdx, delta)
-	if err != nil {
-		return err
+	// deposit always append to current balance
+	if deposit {
+		newBal, err := mathutil.Add64(balAtIdx, delta)
+		if err != nil {
+			return err
+		}
+
+		return state.UpdateBalancesAtIndex(idx, newBal)
+	} else {
+		newBal, err := IncreaseBalanceWithVal(balAtIdx, delta)
+		if err != nil {
+			return err
+		}
+		return state.UpdateBalancesAtIndex(idx, newBal)
 	}
-	return state.UpdateBalancesAtIndex(idx, newBal)
 }
 
 // IncreaseBalanceWithVal increases validator with the given 'index' balance by 'delta' in Gwei.
@@ -120,7 +130,19 @@ func IncreaseBalance(state state.BeaconState, idx primitives.ValidatorIndex, del
 //	  """
 //	  state.balances[index] += delta
 func IncreaseBalanceWithVal(currBalance, delta uint64) (uint64, error) {
-	return mathutil.Add64(currBalance, delta)
+	if currBalance >= params.BeaconConfig().MaxExcessBalance {
+		return currBalance, nil
+	}
+
+	newBal, err := mathutil.Add64(currBalance, delta)
+	if err != nil {
+		return 0, err
+	}
+	// canxium is not allow reward if > MaxExcessBalance
+	if newBal > params.BeaconConfig().MaxExcessBalance {
+		newBal = params.BeaconConfig().MaxExcessBalance
+	}
+	return newBal, nil
 }
 
 // DecreaseBalance decreases validator with the given 'index' balance by 'delta' in Gwei.
