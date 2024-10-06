@@ -7,7 +7,7 @@ func UsePraseOdyNetworkConfig() {
 	cfg := BeaconNetworkConfig().Copy()
 	cfg.ContractDeploymentBlock = 0
 	cfg.BootstrapNodes = []string{
-    	// lighthouse
+		// lighthouse
 		"enr:-Le4QGgkMit_S6dcseu-6HUrQLKgXsOqjGmXvALew2xjINBwFeAGMGufIfOLQZoDXEBhqAnhjMW6eXufW81mVUNnnaMChGV0aDKQ2jJYTwAyMwABAAAAAAAAAIJpZIJ2NIJpcIQFobgAg2lwNpAqAQT_APCN3QAAAAAAAAABiXNlY3AyNTZrMaECNQgaxqD0o_mb6YMG5YDwIm0GhXMJF0iEuvAb-Sjl9KKDdWRwgiOMhHVkcDaCI-Y", // 40
 		"enr:-Le4QJFLssDaSa99PqSFZVmzYPLFjLR0Glf5sLtNhluY1p4gV0NG1AWNiluckVx4ZNq7QCB_q-RbNUSvjZZ-wJl6XzYBhGV0aDKQ2jJYTwAyMwABAAAAAAAAAIJpZIJ2NIJpcIQxDY3Wg2lwNpAqAQT4wBI7yQAAAAAAAAABiXNlY3AyNTZrMaEDAnVP2fJn3ZQU2NBaoPOWYtKl7_JP1-6AMrZkMYM-x4CDdWRwgiOMhHVkcDaCI-Y", // 14
 		"enr:-Le4QApx4yDdnYodma6kKim7v_UARV1B1AZ6fBMoMX2tM_gJQzOaY_lGfJ-e_q_3ZqZGavyIfhWme5SmdQTipYNa1bMBhGV0aDKQ2jJYTwAyMwABAAAAAAAAAIJpZIJ2NIJpcISyEInRg2lwNpAqAkeAABIjpwAAAAAAAAABiXNlY3AyNTZrMaEDCUfXoP8UZUHaVQpm8TQRhm-xWGtyHbAsi5hZxmUinhGDdWRwgiOMhHVkcDaCI-Y", // 09
@@ -19,8 +19,8 @@ func UsePraseOdyNetworkConfig() {
 
 		// static nodes
 		"enr:-KC4QIhraGmuvYKCiZX5O5dzIXRRCsL1vYUo7F9DEzeMUI1XGXXrz7d8COU4IKtluOGjpNCpOgS8uvsZXR2eoVpFiRsBgmlkgnY0gmlwhA_rjYiDaXA2kCQCHwCAAAgAAAAAAAAALNyJc2VjcDI1NmsxoQMSRV2gTlqXdgWCMHjGpRWl7v9uxn5Fg7BGlN_bc43Nf4N0Y3CCIyqDdWRwgiMq", // ovh 136
-		"enr:-Iu4QGWVVetaMn9EbBzLYYWKWvISuB70mpZ0CIontoN0hDsYD3sbAo5HoCfXO5m4TLjlKku0AIrNboXjQrnj1oKTXrQCgmlkgnY0gmlwhE3t8NOJc2VjcDI1NmsxoQNk7zs3J_uADDHgjZ8yRJ3WlneOd955rQF0wNFGyOydFIN0Y3CCIyyDdWRwgiMs", // 211
-		"enr:-Iu4QCKlcenV8UzhV4VjnvXJzL2Cguuw6BrmXrLqdz6vRk7IGGWLmPZcY6Q2tU5ivLIZN312i8HYjztD7SnB4ppMTv8BgmlkgnY0gmlwhE3t8NKJc2VjcDI1NmsxoQI1g-K4llSsqpZysW2PhvPUCjMUri-NrfTqyUL4AE4mgYN0Y3CCIyyDdWRwgiMs", // 210
+		"enr:-Iu4QGWVVetaMn9EbBzLYYWKWvISuB70mpZ0CIontoN0hDsYD3sbAo5HoCfXO5m4TLjlKku0AIrNboXjQrnj1oKTXrQCgmlkgnY0gmlwhE3t8NOJc2VjcDI1NmsxoQNk7zs3J_uADDHgjZ8yRJ3WlneOd955rQF0wNFGyOydFIN0Y3CCIyyDdWRwgiMs",                             // 211
+		"enr:-Iu4QCKlcenV8UzhV4VjnvXJzL2Cguuw6BrmXrLqdz6vRk7IGGWLmPZcY6Q2tU5ivLIZN312i8HYjztD7SnB4ppMTv8BgmlkgnY0gmlwhE3t8NKJc2VjcDI1NmsxoQI1g-K4llSsqpZysW2PhvPUCjMUri-NrfTqyUL4AE4mgYN0Y3CCIyyDdWRwgiMs",                             // 210
 	}
 	OverrideBeaconNetworkConfig(cfg)
 }
@@ -30,10 +30,10 @@ func PraseOdyConfig() *BeaconChainConfig {
 	cfg := MainnetConfig().Copy()
 	cfg.ConfigName = PraseOdyName
 
-	cfg.MinGenesisTime = 1716360347
-	cfg.MinGenesisActiveValidatorCount = 132
+	cfg.MinGenesisTime = 1727864552
+	cfg.MinGenesisActiveValidatorCount = 158
 
-	cfg.GenesisDelay = 46800
+	cfg.GenesisDelay = 82000
 
 	cfg.DepositChainID = 30203
 	cfg.DepositNetworkID = 30203
@@ -42,14 +42,14 @@ func PraseOdyConfig() *BeaconChainConfig {
 	cfg.GenesisForkVersion = []byte{0x00, 0x32, 0x23, 0x00}
 	cfg.AltairForkEpoch = 1
 	cfg.AltairForkVersion = []byte{0x00, 0x32, 0x33, 0x00}
-	cfg.BellatrixForkEpoch = 10
+	cfg.BellatrixForkEpoch = 3
 	cfg.BellatrixForkVersion = []byte{0x00, 0x32, 0x43, 0x00}
 	cfg.CapellaForkEpoch = 40
 	cfg.CapellaForkVersion = []byte{0x00, 0x32, 0x53, 0x00}
 	cfg.DenebForkEpoch = math.MaxUint64
 	cfg.DenebForkVersion = []byte{0x00, 0x32, 0x63, 0x00}
 
-	cfg.TerminalTotalDifficulty = "762047059"
+	cfg.TerminalTotalDifficulty = "3082047059"
 
 	cfg.SecondsPerSlot = 6
 	cfg.SecondsPerETH1Block = 6
@@ -58,7 +58,7 @@ func PraseOdyConfig() *BeaconChainConfig {
 	cfg.BaseRewardFactor = 512
 	cfg.InactivityPenaltyQuotientBellatrix = 1 << 22
 	cfg.MaxExcessBalance = 32 * 1e10
-	
+
 	cfg.InitializeForkSchedule()
 	return cfg
 }
