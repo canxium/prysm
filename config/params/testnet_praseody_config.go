@@ -1,6 +1,10 @@
 package params
 
-import "math"
+import (
+	"math"
+
+	"github.com/ethereum/go-ethereum/common"
+)
 
 // UsePraseOdyNetworkConfig uses the PraseOdy beacon chain specific network config.
 func UsePraseOdyNetworkConfig() {
@@ -16,11 +20,6 @@ func UsePraseOdyNetworkConfig() {
 		"enr:-KG4QBhzrzGIi3fJCa3-GXBkvPBQXft1Gwmutwt3AtqIgje5MLoLyCDY0IIvxnqwE-F7GBvJUjMRl3x9zxbFgn6em3ECgmlkgnY0gmlwhAWhuACDaXA2kCoBBP8A8I3dAAAAAAAAAAGJc2VjcDI1NmsxoQO9vb9FwSJh3mxz3wTIdjpBCJr2NMlDnLQ_h3BOOJGQfoN1ZHCCI42EdWRwNoIj5w", // 51
 		"enr:-KG4QCYl1Zl_XSN4_ly7n-5867u2ZbSGamFgawB1iI7-qkONGqFCyOC1XeVJEYlYoZ9oBRLfBwBAsIlloRWuHLU1A3kBgmlkgnY0gmlwhDENjdaDaXA2kCoBBPjAEjvJAAAAAAAAAAGJc2VjcDI1NmsxoQKkjFpo0r-D_6Cqnx3L-Mr1YdZc0mzakPF57hYWyz6DNIN1ZHCCI42EdWRwNoIj5w", // 49
 		"enr:-KG4QDWqJ8wxnw4JHqQzxVSGSet4q8osBH568XkMnC1u8fPnPFARnkPIAq8KKEa8JKi6kN1EFSFkfnv8k6ZeWJPXTSkBgmlkgnY0gmlwhLIQidGDaXA2kCoCR4AAEiOnAAAAAAAAAAGJc2VjcDI1NmsxoQOEVvdJhjDQB6zwUNjYCNTvPXtCSKc2UqW5x2VoG5Gp04N1ZHCCI42EdWRwNoIj5w", // 17
-
-		// static nodes
-		"enr:-KC4QIhraGmuvYKCiZX5O5dzIXRRCsL1vYUo7F9DEzeMUI1XGXXrz7d8COU4IKtluOGjpNCpOgS8uvsZXR2eoVpFiRsBgmlkgnY0gmlwhA_rjYiDaXA2kCQCHwCAAAgAAAAAAAAALNyJc2VjcDI1NmsxoQMSRV2gTlqXdgWCMHjGpRWl7v9uxn5Fg7BGlN_bc43Nf4N0Y3CCIyqDdWRwgiMq", // ovh 136
-		"enr:-Iu4QGWVVetaMn9EbBzLYYWKWvISuB70mpZ0CIontoN0hDsYD3sbAo5HoCfXO5m4TLjlKku0AIrNboXjQrnj1oKTXrQCgmlkgnY0gmlwhE3t8NOJc2VjcDI1NmsxoQNk7zs3J_uADDHgjZ8yRJ3WlneOd955rQF0wNFGyOydFIN0Y3CCIyyDdWRwgiMs",                             // 211
-		"enr:-Iu4QCKlcenV8UzhV4VjnvXJzL2Cguuw6BrmXrLqdz6vRk7IGGWLmPZcY6Q2tU5ivLIZN312i8HYjztD7SnB4ppMTv8BgmlkgnY0gmlwhE3t8NKJc2VjcDI1NmsxoQI1g-K4llSsqpZysW2PhvPUCjMUri-NrfTqyUL4AE4mgYN0Y3CCIyyDdWRwgiMs",                             // 210
 	}
 	OverrideBeaconNetworkConfig(cfg)
 }
@@ -30,34 +29,36 @@ func PraseOdyConfig() *BeaconChainConfig {
 	cfg := MainnetConfig().Copy()
 	cfg.ConfigName = PraseOdyName
 
-	cfg.MinGenesisTime = 1727864552
-	cfg.MinGenesisActiveValidatorCount = 158
+	cfg.MinGenesisTime = 1739091943
+	cfg.MinGenesisActiveValidatorCount = 164
 
-	cfg.GenesisDelay = 82000
+	cfg.GenesisDelay = 60
 
-	cfg.DepositChainID = 30203
-	cfg.DepositNetworkID = 30203
-	cfg.DepositContractAddress = "0x55155Ca1F57bbDB1e8e10EBB871c00D809E5E84f"
+	cfg.DepositChainID = 30303
+	cfg.DepositNetworkID = 30303
+	cfg.DepositContractAddress = "0x4242424242424242424242424242424242424242"
 
 	cfg.GenesisForkVersion = []byte{0x00, 0x32, 0x23, 0x00}
 	cfg.AltairForkEpoch = 1
 	cfg.AltairForkVersion = []byte{0x00, 0x32, 0x33, 0x00}
-	cfg.BellatrixForkEpoch = 3
+	cfg.BellatrixForkEpoch = 2
 	cfg.BellatrixForkVersion = []byte{0x00, 0x32, 0x43, 0x00}
-	cfg.CapellaForkEpoch = 40
+	cfg.CapellaForkEpoch = 3
 	cfg.CapellaForkVersion = []byte{0x00, 0x32, 0x53, 0x00}
 	cfg.DenebForkEpoch = math.MaxUint64
 	cfg.DenebForkVersion = []byte{0x00, 0x32, 0x63, 0x00}
 
-	cfg.TerminalTotalDifficulty = "3082047059"
+	cfg.TerminalTotalDifficulty = "1000000"
+	cfg.TerminalBlockHash = common.HexToHash("0x0000000000000000000000000000000000000000000000000000000000000000")
+	cfg.TerminalBlockHashActivationEpoch = 18446744073709551615
 
-	cfg.SecondsPerSlot = 6
-	cfg.SecondsPerETH1Block = 6
+	cfg.SecondsPerSlot = 3
+	cfg.SecondsPerETH1Block = 3
 	cfg.Eth1FollowDistance = 128
 
-	cfg.BaseRewardFactor = 512
-	cfg.InactivityPenaltyQuotientBellatrix = 1 << 22
-	cfg.MaxExcessBalance = 32 * 1e10
+	cfg.BaseRewardFactor = 64
+	cfg.InactivityPenaltyQuotientBellatrix = 16777216
+	cfg.MaxExcessBalance = 32 * 1e9
 
 	cfg.InitializeForkSchedule()
 	return cfg
