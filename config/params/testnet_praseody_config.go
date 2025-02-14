@@ -29,7 +29,7 @@ func PraseOdyConfig() *BeaconChainConfig {
 	cfg := MainnetConfig().Copy()
 	cfg.ConfigName = PraseOdyName
 
-	cfg.MinGenesisTime = 1739091943
+	cfg.MinGenesisTime = 1739453977
 	cfg.MinGenesisActiveValidatorCount = 164
 
 	cfg.GenesisDelay = 60
